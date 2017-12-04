@@ -83,7 +83,7 @@ class ClassEnumerator extends Enumerator
         }
 
         if ($user) {
-            $ret['User ' . $key] = array_filter($classes, function ($class) {
+            $ret['Vartotoja ' . $key] = array_filter($classes, function ($class) {
                 $refl = new \ReflectionClass($class);
 
                 return !$refl->isInternal();

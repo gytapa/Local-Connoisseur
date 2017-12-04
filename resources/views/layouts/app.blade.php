@@ -19,8 +19,8 @@
         <li>Search for a place</li>
         <li>About</li>
         <li>Contacts</li>
-        <li><button id="login">Log In</button></li>
-        <li><button id="register">Register</button> </li>
+        <li><a href="/login" id="login">Log In</a></li>
+        <li><a href="/register" id="register">Register</a> </li>
     </ul>
 </div>
 

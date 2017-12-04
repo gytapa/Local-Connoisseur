@@ -79,7 +79,7 @@
             @foreach ($places as $place)
                 <div class="card w-75">
                     <div class="card-block">
-                        <img width="300px" src="{{$place['photo']}}" alt="Card image cap">
+                        <img width="300px" src="{{$place['photo']}}" alt="No image available">
                         <h6 class="card-title">{{$place['name']}}</h6>
                         <p class="card-text">{{$place['address']}}</p>
                         <p class="card-text">Get Directions</p>

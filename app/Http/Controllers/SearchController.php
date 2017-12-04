@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rules\In;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
 
     public function displayData()
     {
+
         $API_KEY = "AIzaSyALWBTn0xzhQRPubLtd42yWWMPzRkVqblo";
         $URL_1text = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+";
         $URL_2text = "&radius=";

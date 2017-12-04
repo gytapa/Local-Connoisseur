@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticate()
+    {
+        if (Auth::attempt(['email' => $_POST['email'], 'password' => $_POST['password']])) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
+    }
 }
