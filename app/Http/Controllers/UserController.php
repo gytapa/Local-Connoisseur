@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -92,6 +93,7 @@ class UserController extends Controller
     //tries to log the user in
     protected function login(Request $request)
     {
+        session_start();
         //checks if there is user with this email
         if (!($this->checkForEmail($request['email'])))
         {
@@ -99,6 +101,7 @@ class UserController extends Controller
             //tries to confirm password
             if (Hash::check($request['password'], $user->slaptazodis)) {
                 //user has entered correct data. put his data to session.
+                $request->session()->put('user',$user);
                 $_SESSION['user'] = $user;
                 return view('loggedin');
             }
@@ -106,7 +109,13 @@ class UserController extends Controller
             return view('login')->with(['password' => "Bad password"]);
         }
         return view('login')->with(['email' => "Entered email is not in our database"]);
+    }
 
+    protected function logout()
+    {
+        session_start();
+        unset($_SESSION['user']);
+        return redirect()->route('home');
     }
 
     //views login page

@@ -28,3 +28,7 @@ Route::post('/register', 'UserController@create');
 //login routes
 Route::get('/login', 'UserController@viewLogin');
 Route::post('/login', 'UserController@login');
+//logout route
+Route::get('/logout','UserController@logout');
+//userpage route
+Route::get('/userpage', 'userDataController@displayUserData');

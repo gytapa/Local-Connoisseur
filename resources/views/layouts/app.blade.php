@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
@@ -15,12 +16,19 @@
 <div>
     <ul>
         <li>Logo</li>
-        <li>Home</li>
-        <li>Search for a place</li>
-        <li>About</li>
-        <li>Contacts</li>
-        <li><a href="/login" id="login">Log In</a></li>
-        <li><a href="/register" id="register">Register</a> </li>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/search">Search for a place</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+        @if(isset($_SESSION['user']->vardas))
+            <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
+            <li><a href="/login" id="login">Log Out</a></li>
+            @else
+            <li><a href="/login" id="login">Log In</a></li>
+            <li><a href="/register" id="register">Register</a> </li>
+
+        @endif
+
     </ul>
 </div>
 
@@ -28,12 +36,19 @@
 
 <div id="footer">
     <ul>
-        <li>Home</li>
-        <li>Search for a place</li>
-        <li>About</li>
-        <li>Contacts</li>
-        <li>Log in</li>
-        <li>Register</li>
+        <li>Logo</li>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/search">Search for a place</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+        @if(isset($_SESSION['user']->vardas))
+            <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
+            <li><a href="/logout" id="login">Log Out</a></li>
+        @else
+            <li><a href="/login" id="login">Log In</a></li>
+            <li><a href="/register" id="register">Register</a> </li>
+
+        @endif
     </ul>
     <h2>Local Connoisseur</h2>
     <h3>2017</h3>

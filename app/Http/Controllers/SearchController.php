@@ -12,7 +12,7 @@ class SearchController extends Controller
 
     public function displayData()
     {
-
+        session_start();
         $API_KEY = "AIzaSyALWBTn0xzhQRPubLtd42yWWMPzRkVqblo";
         $URL_1text = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+";
         $URL_2text = "&radius=";
