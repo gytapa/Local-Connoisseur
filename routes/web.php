@@ -32,3 +32,17 @@ Route::post('/login', 'UserController@login');
 Route::get('/logout','UserController@logout');
 //userpage route
 Route::get('/userpage', 'userDataController@displayUserData');
+//places route
+Route::get('/places', 'PlacesController@getPlaces');
+//places evalution route
+Route::get('/places/evaluate/{pid}/{evaluation}', 'PlacesController@Evaluate');
+//info of place route
+Route::get('/infoOfPlace/{pid}', 'PlacesController@getInfoOfPlace');
+//Comment route
+Route::post('/infoOfPlace/send', 'CommentsController@send');
+//evaluete comment route
+Route::get('/infoOfPlace/evaluate/{cid}/{evaluation}/{pid}', 'CommentsController@Evaluate');
+//visited place
+Route::get('/infoOfPlace/visited/{pid}', 'PlacesController@visited');
+//visited submit
+Route::post('/infoOfPlace/submitVisited', 'PlacesController@submitVisited');

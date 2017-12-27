@@ -23,6 +23,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class VietosVertinima extends Eloquent
 {
+    protected $primaryKey = null;
 	public $incrementing = false;
 	public $timestamps = false;
 

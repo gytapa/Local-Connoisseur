@@ -20,6 +20,7 @@
         <li><a href="/search">Search for a place</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contacts">Contacts</a></li>
+        <li><a href="/places">Places</a></li>
         @if(isset($_SESSION['user']->vardas))
             <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
             <li><a href="/login" id="login">Log Out</a></li>
@@ -41,6 +42,7 @@
         <li><a href="/search">Search for a place</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contacts">Contacts</a></li>
+        <li><a href="/places">Places</a></li>
         @if(isset($_SESSION['user']->vardas))
             <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
             <li><a href="/logout" id="login">Log Out</a></li>

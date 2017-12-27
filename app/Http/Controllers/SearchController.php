@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LankytinaVietum;
+use App\Models\LankytiosVietosTipai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rules\In;
@@ -85,8 +87,28 @@ class SearchController extends Controller
             {
                 return view('search')->with(['klaida' =>'Nerasta jokių vietų','places' => $extractedPlaces]);
             }
-else
-            return view('search')->with(['city' => $city, 'radius' => $radius, 'places' => $extractedPlaces]);
+else {
+         foreach ($extractedPlaces as $place)     {
+             if (LankytinaVietum::where('id', $place['id'])->count() == 0) {
+                 $newPlace = new LankytinaVietum;
+                 $newPlace->id = $place['id'];
+                 $newPlace->pavadinimas = $place['name'];
+                 $myArray = explode(',', $place['address']);
+                 $count = count($myArray);
+                 //Pašalinam pašto kodą
+                 $citySpace = preg_replace('/[0-9]+/', '', $myArray[$count-2]);
+                 //Pašalinam tab ir space
+                 $city = preg_replace('/\s+/','',$citySpace);
+                 $newPlace->miestas = $city;
+                 $newPlace->adresas = $place['address'];
+                 //Tipus reik sutvarkyt paskui :(
+                 $newPlace->tipas = 1;
+
+                 $newPlace->save();
+             }
+         }
+    return view('search')->with(['city' => $city, 'radius' => $radius, 'places' => $extractedPlaces]);
+}
         }
         else
             return view("search");

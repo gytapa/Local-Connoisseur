@@ -83,7 +83,7 @@ CREATE TABLE `lankytina_vieta` (
   `id` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
   `pavadinimas` varchar(50) COLLATE utf8_lithuanian_ci NOT NULL,
   `miestas` varchar(20) COLLATE utf8_lithuanian_ci NOT NULL,
-  `adresas` varchar(70) COLLATE utf8_lithuanian_ci NOT NULL,
+  `adresas` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
   `tipas` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
 
