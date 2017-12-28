@@ -74,8 +74,11 @@ class SearchController extends Controller
                 else
                 {
 
-                    if (array_key_exists('vicinity', $place))
-                        $place = array('name' => $place['name'], 'address' => $place['vicinity'], 'id' => $place['place_id'], 'photo' => $photoUrl );
+                    if (array_key_exists('vicinity', $place)) {
+                        $photoUrl = "https://lh3.googleusercontent.com/MPPFasYaJ-m7gU1BgbZQmxC1yCbj1zEKCHZGRgaml8HmPyP_F0wj2nsyh6lLvO0XXkU=w300";
+                        $_POST['photo'] = $photoUrl;
+                        $place = array('name' => $place['name'], 'address' => $place['vicinity'], 'id' => $place['place_id'], 'photo' => "https://i.ytimg.com/vi/6rePvdSgvSQ/maxresdefault.jpg");
+                    }
                     else
                         $place = array('name' => $place['name'], 'address' => $place['formatted_address'], 'id' => $place['place_id'], 'photo' => $photoUrl );
                     $extractedPlaces[$count] = $place;

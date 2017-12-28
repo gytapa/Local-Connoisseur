@@ -79,7 +79,7 @@
             @foreach ($places as $place)
                 <div class="card w-75">
                     <div class="card-block">
-                        <img width="300px" src="{{$place['photo']}}" alt="No image available">
+                        <a href="/infoOfPlace/{{$place['id']}}"><img width="300px" src="{{$place['photo']}}" alt="No image available"></a>
                         <h6 class="card-title">{{$place['name']}}</h6>
                         <p class="card-text">{{$place['address']}}</p>
                         <p class="card-text">Get Directions</p>
@@ -87,6 +87,6 @@
                 </div>
             @endforeach
         @endif
-        {{ $klaida or 'empty string' }}
+        {{ $klaida or ' ' }}
     </div>
 @endsection
