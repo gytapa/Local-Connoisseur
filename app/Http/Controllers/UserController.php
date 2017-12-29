@@ -79,7 +79,7 @@ class UserController extends Controller
             $user->ar_patvirtinta = false;
             $user->el_pastas = $request['email'];
             $user->miestas = $request['city'];
-            $user->role = 0;
+            $user->role = $request['type'];
             $user->slaptazodis = Hash::make($request['password1']);
             $user->save();
 

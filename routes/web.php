@@ -32,6 +32,9 @@ Route::post('/login', 'UserController@login');
 Route::get('/logout','UserController@logout');
 //userpage route
 Route::get('/userpage', 'userDataController@displayUserData');
+//confirm users route
+Route::get('/confirmusers', 'userDataController@confirmUsers');
+Route::get('/confirm/{uid}', 'userDataController@confirmUser');
 //places route
 Route::get('/places', 'PlacesController@getPlaces');
 //places evalution route

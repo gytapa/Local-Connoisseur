@@ -2,6 +2,13 @@
 @section ('content')
     <form method="post" action="">
         <div class="form-group">
+            <label id="typeLabel" for="type">Select your account type</label>
+            <select name="type" id="type">
+                <option value="1">Food Critic</option>
+                <option value="2">User</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Your Email">
             @if(isset($yra))
