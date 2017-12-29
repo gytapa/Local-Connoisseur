@@ -57,3 +57,5 @@ Route::get('/lists/infoOfList/{lid}', 'ListsController@getInfoOfList');
 Route::get('/lists/newList', 'ListsController@newList');
 //new list
 Route::post('/lists/submitNewList', 'ListsController@submitNewList');
+
+Route::get('/test','ListsController@test');

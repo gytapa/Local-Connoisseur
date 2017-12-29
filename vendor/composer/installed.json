@@ -4453,5 +4453,54 @@
         ],
         "description": "HTML and Form Builders for the Laravel Framework",
         "homepage": "http://laravelcollective.com"
+    },
+    {
+        "name": "jadjoubran/laravel-angular",
+        "version": "0.4.0",
+        "version_normalized": "0.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jadjoubran/laravel-angular.git",
+            "reference": "e402f5d4477481095ac98aaf51544064bf808e5b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jadjoubran/laravel-angular/zipball/e402f5d4477481095ac98aaf51544064bf808e5b",
+            "reference": "e402f5d4477481095ac98aaf51544064bf808e5b",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "^5.1",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "illuminate/support": "^5.1"
+        },
+        "time": "2017-12-17T11:41:06+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Jadjoubran\\LaravelAngular\\Provider\\LaravelServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jadjoubran\\LaravelAngular\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jad Joubran",
+                "email": "joubran.jad@gmail.com"
+            }
+        ],
+        "description": "Laravel & Angular package"
     }
 ]

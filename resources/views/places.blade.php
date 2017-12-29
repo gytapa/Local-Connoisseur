@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <h1>Places</h1>
     <br/>
@@ -33,11 +32,9 @@
                     <td><a href="{{ url('places/evaluate/'.$place->id.'/1/') }}">+1</a></td>
                     <td><a href="{{ url('places/evaluate/'.$place->id.'/-1/') }}">-1</a></td>
 
-
                 </tr>
             @endforeach
         </table>
     @endif
     <br/>
-
 @endsection

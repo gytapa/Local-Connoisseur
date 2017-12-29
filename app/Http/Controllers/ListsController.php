@@ -43,4 +43,9 @@ class ListsController extends Controller
         session_start();
         return view('infoOfList');
     }
+
+    public function test(){
+        session_start();
+        return view('test');
+}
 }

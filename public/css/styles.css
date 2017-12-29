@@ -2,3 +2,85 @@
     height: 400px;
     width: 100%;
 }
+
+#body1 {
+    background-image: url("https://image.shutterstock.com/z/stock-photo-chinese-food-dark-background-chinese-noodles-fried-rice-noodle-soup-dim-sum-spring-rolls-559229029.jpg");
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.center {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#test1 {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 30%;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+}
+
+#email, #password1{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 auto;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn_center  {
+    text-align: center;
+}
+
+#submit {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #45a049;
+}
+
+.navbar-color{
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.footernavbar-color{
+    background-color: #2769AD;
+}
+
+
+.navbar-item-color{
+    color:white;
+}
+
+#footer{
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    background-color: #2769AD;
+    text-align: center;
+}
+
+.footer-element{
+    color: white;
+}

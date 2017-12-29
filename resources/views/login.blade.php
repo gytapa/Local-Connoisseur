@@ -1,6 +1,7 @@
 @extends ('layouts.app')
 @section ('content')
     <form method="post" action="">
+        <div class="center" id="test1">
         <div class="form-group">
             <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Your Email">
@@ -21,7 +22,10 @@
                 @endif
         </div>
 
+        <div class="btn_center">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="submit" type="submit" class="btn btn-primary">Log in</button>
+        </div>
+        </div>
     </form>
 @endsection
