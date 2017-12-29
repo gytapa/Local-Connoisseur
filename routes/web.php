@@ -46,3 +46,11 @@ Route::get('/infoOfPlace/evaluate/{cid}/{evaluation}/{pid}', 'CommentsController
 Route::get('/infoOfPlace/visited/{pid}', 'PlacesController@visited');
 //visited submit
 Route::post('/infoOfPlace/submitVisited', 'PlacesController@submitVisited');
+//List route
+Route::get('/lists', 'ListsController@getMyLists');
+//info of list
+Route::get('/lists/infoOfList/{lid}', 'ListsController@getInfoOfList');
+//new list
+Route::get('/lists/newList', 'ListsController@newList');
+//new list
+Route::post('/lists/submitNewList', 'ListsController@submitNewList');

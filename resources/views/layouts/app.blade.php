@@ -21,15 +21,14 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contacts">Contacts</a></li>
         <li><a href="/places">Places</a></li>
+        <li><a href="/lists">My lists</a></li>
         @if(isset($_SESSION['user']->vardas))
             <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
             <li><a href="/login" id="login">Log Out</a></li>
             @else
             <li><a href="/login" id="login">Log In</a></li>
             <li><a href="/register" id="register">Register</a> </li>
-
         @endif
-
     </ul>
 </div>
 
@@ -43,6 +42,7 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contacts">Contacts</a></li>
         <li><a href="/places">Places</a></li>
+        <li><a href="/lists">My lists</a></li>
         @if(isset($_SESSION['user']->vardas))
             <li><a href="/userpage"> Sveiki, {{$_SESSION['user']->vardas}}</a></li>
             <li><a href="/logout" id="login">Log Out</a></li>

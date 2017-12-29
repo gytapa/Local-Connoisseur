@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `aplankyta_vieta` (
+  `id` int(20) NOT NULL,
   `komentaras` varchar(300) COLLATE utf8_lithuanian_ci DEFAULT NULL,
   `fk_VARTOTOJASid` int(20) NOT NULL,
   `fk_LANKYTINA_VIETAid` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL
@@ -41,6 +42,7 @@ CREATE TABLE `aplankyta_vieta` (
 --
 
 CREATE TABLE `itraukta_vieta` (
+  `id` int(20) NOT NULL,
   `aprasymas` varchar(300) COLLATE utf8_lithuanian_ci DEFAULT NULL,
   `fk_LANKYTINA_VIETAid` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
   `fk_SARASASid` int(20) NOT NULL
@@ -68,6 +70,7 @@ CREATE TABLE `komentaras` (
 --
 
 CREATE TABLE `komentaro_vertinimas` (
+  `id` int(20) NOT NULL,
   `vertinimas` int(1) NOT NULL,
   `fk_VARTOTOJASid` int(20) NOT NULL,
   `fk_KOMENTARASid` int(20) NOT NULL
@@ -170,6 +173,7 @@ INSERT INTO `users` (`id`, `el_pastas`, `pavarde`, `vardas`, `role`, `paskutinis
 --
 
 CREATE TABLE `vietos_vertinimas` (
+  `id` int(20) NOT NULL,
   `vertinimas` int(1) NOT NULL,
   `fk_VARTOTOJASid` int(20) NOT NULL,
   `fk_LANKYTINA_VIETAid` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL
@@ -183,14 +187,16 @@ CREATE TABLE `vietos_vertinimas` (
 -- Indexes for table `aplankyta_vieta`
 --
 ALTER TABLE `aplankyta_vieta`
-  ADD PRIMARY KEY (`fk_VARTOTOJASid`,`fk_LANKYTINA_VIETAid`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test3` (`fk_VARTOTOJASid`),
   ADD KEY `tampa` (`fk_LANKYTINA_VIETAid`);
 
 --
 -- Indexes for table `itraukta_vieta`
 --
 ALTER TABLE `itraukta_vieta`
-  ADD PRIMARY KEY (`fk_LANKYTINA_VIETAid`,`fk_SARASASid`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test4` (`fk_LANKYTINA_VIETAid`),
   ADD KEY `sudarytas` (`fk_SARASASid`);
 
 --
@@ -205,7 +211,8 @@ ALTER TABLE `komentaras`
 -- Indexes for table `komentaro_vertinimas`
 --
 ALTER TABLE `komentaro_vertinimas`
-  ADD PRIMARY KEY (`fk_VARTOTOJASid`,`fk_KOMENTARASid`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test2` (`fk_VARTOTOJASid`),
   ADD KEY `priklauso` (`fk_KOMENTARASid`);
 
 --
@@ -251,7 +258,8 @@ ALTER TABLE `users`
 -- Indexes for table `vietos_vertinimas`
 --
 ALTER TABLE `vietos_vertinimas`
-  ADD PRIMARY KEY (`fk_VARTOTOJASid`,`fk_LANKYTINA_VIETAid`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `test` (`fk_VARTOTOJASid`),
   ADD KEY `turi` (`fk_LANKYTINA_VIETAid`);
 
 --
@@ -287,6 +295,19 @@ ALTER TABLE `sertifikatas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+
+ALTER TABLE `vietos_vertinimas`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `komentaro_vertinimas`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `aplankyta_vieta`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `itraukta_vieta`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables

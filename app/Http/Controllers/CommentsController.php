@@ -35,16 +35,19 @@ class CommentsController extends Controller
         if ($evaluation == 1 || $evaluation == -1) {
             if (!empty($_SESSION['user'])) {
                 $isAlreadyEvaluated = KomentaroVertinima::all()->where('fk_VARTOTOJASid', '=', $_SESSION['user']->id)->where('fk_KOMENTARASid', '=', $cid)->first();
-
-                //Problema, kaip su vietos vertinimu, neberaginsiu jau :DD
+                //Jei dar nevertinta
                 if (empty($isAlreadyEvaluated)) {
-                    /*VietosVertinima::all()->where('fk_VARTOTOJASid', '=', $_SESSION['user']->id)->where('fk_LANKYTINA_VIETAid','=', $pid)->first()->delete();
-                }*/
                     $newEvaluation = new KomentaroVertinima;
                     $newEvaluation->vertinimas = $evaluation;
                     $newEvaluation->fk_KOMENTARASid = $cid;
                     $newEvaluation->fk_VARTOTOJASid = $_SESSION['user']->id;
                     $newEvaluation->save();
+                }
+                //Jei skirias vertinimas
+                elseif ($isAlreadyEvaluated->vertinimas != $evaluation){
+                    $isAlreadyEvaluated->vertinimas =$evaluation;
+                    $isAlreadyEvaluated->save();
+
                 }
 
             }

@@ -32,18 +32,19 @@ class PlacesController extends Controller
         if($evaluation == 1 || $evaluation ==-1) {
             if (!empty($_SESSION['user'])) {
                 $isAlreadyEvaluated = VietosVertinima::all()->where('fk_VARTOTOJASid', '=', $_SESSION['user']->id)->where('fk_LANKYTINA_VIETAid','=', $pid)->first();
-
-                //Didesnio sudo uz sita, kur praso id nemates
-                //Dvieju fk negali nurodyt sitai palevai tai istrina visus vertinimus, jei viena nurodai :DD Bbz kaip apeit, nes si tam sudui px, kad where nurodai :DDD
-                //Baiges kantrybe, belekaip laiko sugaisau, veliau jauciu id sudesiu ir bus gerai, ka dabar kas daunas nezino, kad galima identifikuot irasus pagal kelis stulpelius :DDDDDDDDDDDDDDDDDDDDDDDDDD
+                //Jei dar nevertinta
                 if (empty($isAlreadyEvaluated)) {
-                    /*VietosVertinima::all()->where('fk_VARTOTOJASid', '=', $_SESSION['user']->id)->where('fk_LANKYTINA_VIETAid','=', $pid)->first()->delete();
-                }*/
                     $newEvaluation = new VietosVertinima;
                     $newEvaluation->vertinimas = $evaluation;
                     $newEvaluation->fk_LANKYTINA_VIETAid = $pid;
                     $newEvaluation->fk_VARTOTOJASid = $_SESSION['user']->id;
                     $newEvaluation->save();
+                }
+                //Jei skirias vertinimas
+                elseif ($isAlreadyEvaluated->vertinimas != $evaluation){
+                       $isAlreadyEvaluated->vertinimas =$evaluation;
+                       $isAlreadyEvaluated->save();
+
                 }
 
             }
