@@ -38,6 +38,7 @@ class Komentara extends Eloquent
 	];
 
 	protected $fillable = [
+	    'tema',
 		'tekstas',
 		'laikas',
 		'ip_adresas',

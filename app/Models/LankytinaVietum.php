@@ -39,7 +39,8 @@ class LankytinaVietum extends Eloquent
 		'pavadinimas',
 		'miestas',
 		'adresas',
-		'tipas'
+		'tipas',
+        'nuotrauka'
 	];
 
 	public function lankytios_vietos_tipai()

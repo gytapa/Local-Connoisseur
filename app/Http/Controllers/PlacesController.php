@@ -29,7 +29,7 @@ class PlacesController extends Controller
     public function Evaluate($pid, $evaluation){
 
         session_start();
-        if($evaluation == 1 || $evaluation ==-1) {
+        if($evaluation >= 1 || $evaluation <= 5) {
             if (!empty($_SESSION['user'])) {
                 $isAlreadyEvaluated = VietosVertinima::all()->where('fk_VARTOTOJASid', '=', $_SESSION['user']->id)->where('fk_LANKYTINA_VIETAid','=', $pid)->first();
                 //Jei dar nevertinta
@@ -50,21 +50,24 @@ class PlacesController extends Controller
             }
         }
 
-        return redirect('\places');
+        return redirect('infoOfPlace/'.$pid);
     }
 
     public function visited($pid){
-        return view('visited')->with('pid', $pid);
+        session_start();
+        $place = LankytinaVietum::all()->where('id',$pid)->first();
+        return view('visited')->with(['pid'=> $pid, 'name' => $place->pavadinimas]);
     }
 
     public function submitVisited(Request $request){
         session_start();
-        if(!empty($_SESSION['user'])) {
+        if(!empty($_SESSION['user']) && date(now()) > $request->input('date')) {
             $this->validate($request, [
                 'comment' => 'required'
             ]);
             //dar viena lentele be id :(
             $newVisitedPlace = new AplankytaVietum();
+            $newVisitedPlace->data = $request->input('date');
             $newVisitedPlace->komentaras = $request->input('comment');
             $newVisitedPlace->fk_VARTOTOJASid =$_SESSION['user']->id;
             $newVisitedPlace->fk_LANKYTINA_VIETAid = $request->input('pid');
@@ -72,5 +75,17 @@ class PlacesController extends Controller
         }
 
         return redirect('infoOfPlace/'.$request->input('pid').'/');
+    }
+
+    public function getVisits(){
+        session_start();
+        if (!isset($_SESSION['user']))
+        {
+            return redirect()->route('home');
+        }
+        else{
+            $visitedPlaces = AplankytaVietum::all()->where('fk_VARTOTOJASid', $_SESSION['user']->id);
+            return view('visits')->with(['visitedPlaces'=> $visitedPlaces]);
+        }
     }
 }

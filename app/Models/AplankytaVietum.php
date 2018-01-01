@@ -30,6 +30,7 @@ class AplankytaVietum extends Eloquent
 	];
 
 	protected $fillable = [
+	    'date',
 		'komentaras'
 	];
 

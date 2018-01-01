@@ -43,7 +43,7 @@ Route::get('/places/evaluate/{pid}/{evaluation}', 'PlacesController@Evaluate');
 Route::get('/infoOfPlace/{pid}', 'PlacesController@getInfoOfPlace');
 //Comment route
 Route::post('/infoOfPlace/send', 'CommentsController@send');
-//evaluete comment route
+//evaluate comment route
 Route::get('/infoOfPlace/evaluate/{cid}/{evaluation}/{pid}', 'CommentsController@Evaluate');
 //visited place
 Route::get('/infoOfPlace/visited/{pid}', 'PlacesController@visited');
@@ -59,3 +59,9 @@ Route::get('/lists/newList', 'ListsController@newList');
 Route::post('/lists/submitNewList', 'ListsController@submitNewList');
 
 Route::get('/test','ListsController@test');
+
+Route::get('/userslist', 'userDataController@getUsersList');
+
+Route::get('/visits', 'PlacesController@getVisits');
+
+Route::get('/deleteComment/{cid}', 'CommentsController@delete');

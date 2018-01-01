@@ -104,6 +104,7 @@ else {
                  $city = preg_replace('/\s+/','',$citySpace);
                  $newPlace->miestas = $city;
                  $newPlace->adresas = $place['address'];
+                 $newPlace->nuotrauka = $place['photo'];
                  //Tipus reik sutvarkyt paskui :(
                  $newPlace->tipas = 1;
 

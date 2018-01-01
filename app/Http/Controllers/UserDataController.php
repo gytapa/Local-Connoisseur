@@ -27,7 +27,7 @@ class UserDataController extends Controller
         session_start();
         if ($_SESSION['user']->role != 0)
             return redirect()->route('home');
-        $users = User::where('role',2)->get();
+        $users = User::where('role', 1)->where('ar_patvirtinta',0)->get();
         return view('confirmusers')->with(['users' => $users]);
     }
 
@@ -41,8 +41,17 @@ class UserDataController extends Controller
         $toConfirm->save();
         $_SESSION['message'] = "Critic was succesfuly confirmed";
         header("Location: /confirmusers");
-        $users = User::where('role',2)->get();
+        $users = User::where('role', 1)->where('ar_patvirtinta',0)->get();
         return view('confirmusers')->with(['users' => $users]);
+    }
+
+    protected function getUsersList(){
+        session_start();
+        if ($_SESSION['user']->role != 0)
+            return redirect()->route('home');
+        $critics = User::where('role', '1')->get();
+        $users = User::where('role', '2')->get();
+        return view('userlist')->with(['users' => $users, 'critics' => $critics]);
     }
 }
 

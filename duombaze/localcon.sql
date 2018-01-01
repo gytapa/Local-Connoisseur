@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `aplankyta_vieta` (
   `id` int(20) NOT NULL,
-  `komentaras` varchar(300) COLLATE utf8_lithuanian_ci DEFAULT NULL,
+  `komentaras` varchar(1000) COLLATE utf8_lithuanian_ci DEFAULT NULL,
+  `data` DATE NOT NULL,
   `fk_VARTOTOJASid` int(20) NOT NULL,
   `fk_LANKYTINA_VIETAid` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
@@ -56,6 +57,7 @@ CREATE TABLE `itraukta_vieta` (
 
 CREATE TABLE `komentaras` (
   `id` int(20) NOT NULL,
+  `tema` varchar(100)  COLLATE utf8_lithuanian_ci NOT NULL,
   `tekstas` varchar(1000) COLLATE utf8_lithuanian_ci NOT NULL,
   `laikas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ip_adresas` varchar(15) COLLATE utf8_lithuanian_ci NOT NULL,
@@ -87,7 +89,8 @@ CREATE TABLE `lankytina_vieta` (
   `pavadinimas` varchar(50) COLLATE utf8_lithuanian_ci NOT NULL,
   `miestas` varchar(20) COLLATE utf8_lithuanian_ci NOT NULL,
   `adresas` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
-  `tipas` int(2) NOT NULL
+  `tipas` int(2) NOT NULL,
+  `nuotrauka` varchar(800) COLLATE utf8_lithuanian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
 
 -- --------------------------------------------------------

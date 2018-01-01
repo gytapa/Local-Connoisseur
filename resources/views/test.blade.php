@@ -1,11 +1,10 @@
 @extends ('layouts.app')
 @section ('content')
-<div ng-app="">
-
-    <p>Input something in the input box:</p>
-    <p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-    <h1>Hello @{{name}}</h1>
-
-</div>
+    <div ng-dropdown-multiselect="" options="example2data" selected-model="example2model" extra-settings="example2settings"></div>
+    <script>
+        $scope.example2model = [];
+        $scope.example2data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"}];
+        $scope.example2settings = {displayProp: 'id'};
+    </script>
 @endsection
 

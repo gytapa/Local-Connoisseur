@@ -1,27 +1,56 @@
 #map {
-    height: 400px;
+    height: 350px;
     width: 100%;
 }
 
-#body1 {
+/*
+Html dėl footerio, body nustatymai
+ */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     background-image: url("https://image.shutterstock.com/z/stock-photo-chinese-food-dark-background-chinese-noodles-fried-rice-noodle-soup-dim-sum-spring-rolls-559229029.jpg");
     /* Full height */
-    height: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
 
+/*
+Centruoti horizontaliai
+ */
 .center {
     margin: 0 auto;
     padding: 10px;
 }
 
+#content{
+    margin-bottom: auto;
+}
+/*
+Login ir register formos css
+ */
 #test1 {
-    margin-top: 15%;
+    margin-top: 10%;
     margin-bottom: 10%;
     width: 30%;
     border-radius: 20px;
@@ -31,9 +60,17 @@
     background: rgba(204, 204, 204, 0.5);
 }
 
-#email, #password1{
+label {
+    display:inline-block;
+    position:relative;
+}
+
+/*
+Login ir register formų laukai
+ */
+.login-register-field{
     width: 100%;
-    padding: 12px 20px;
+    padding: 8px 20px;
     margin: 8px 0 auto;
     display: inline-block;
     border: 2px solid #ccc;
@@ -41,10 +78,16 @@
     box-sizing: border-box;
 }
 
+/*
+mygtuko centravimas
+ */
 .btn_center  {
     text-align: center;
 }
 
+/*
+Submit mygtukai
+ */
 #submit {
     width: 30%;
     background-color: #4CAF50;
@@ -59,28 +102,379 @@
     background-color: #45a049;
 }
 
+/*
+Permatoams meniu
+ */
 .navbar-color{
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+/*
+Poraštės maniu
+ */
 .footernavbar-color{
     background-color: #2769AD;
 }
 
-
+/*
+Meniu teksto spalva
+ */
 .navbar-item-color{
     color:white;
 }
 
-#footer{
-    position:absolute;
+/*
+Poraštės stilius
+ */
+.footer{
+    position: absolute;/*visad apačioj nepriklausomai nuo data kiekio*/
+    right: 0;
     bottom: 0;
+    left: 0;
     width:100%;
     background-color: #2769AD;
     text-align: center;
 }
 
-.footer-element{
+
+/*
+Poraštės teksto spalva
+ */
+.footer-element {
     color: white;
+}
+
+/*
+home puslapis
+ */
+#home-message{
+    border-style: solid;
+    border-color: white;
+    text-align: center;
+    color: white;
+    width: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+#home-message h1{
+    font-size: 200%;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#home-message p{
+    margin-bottom: 30px;
+}
+
+#home-button {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #2769AD;
+    border: none;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding: 5px 20px 5px 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+#home-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+#home-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#home-button:hover span {
+    padding-right: 25px;
+}
+
+#home-button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/*
+search langas
+ */
+
+.transparent{
+    background: rgb(0, 0, 0); /* Fallback for older browsers without RGBA-support */
+    background: rgba(0, 0, 0, 0.5);
+    color:white;
+    padding: 2% 10% 2% 10%;
+
+}
+
+#search h2, p {
+    text-align: center;
+}
+
+.Row
+{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.Row-ext{
+    margin-top: 40px;
+}
+.Column
+{
+    display: table-cell;
+}
+
+#city-column {
+    width:25%;
+}
+
+#or-column {
+    width:15%;
+}
+
+#map-column, #image-column{
+    width:60%;
+}
+
+#slidecontainer{
+    padding-left: 20%;
+    padding-right: 10%;
+    width:80%;
+}
+
+#slideInputContainer{
+    width:20%;
+}
+
+.radius-field{
+    width: 50%;
+    padding: 4px 2px;
+    margin: 8px 0 auto;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/*
+Range
+ */
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: mediumseagreen;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: mediumseagreen;
+    cursor: pointer;
+}
+
+.foundedPlaces{
+    background-color: gray;
+    padding: 2% 8% 2% 8%;
+}
+
+.foundedPlaces h3{
+    text-align: center;
+}
+
+.floating-box {
+    display: inline-block;
+    width: 500px;
+    height: 300px;
+    margin: 10px;
+    background-color: white;
+}
+
+.Row2
+{
+    display: table;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+}
+
+#image{
+    margin: 5% 5% 5% 5%;
+    height: 100%;
+    width: 100%;
+}
+
+#list-img {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    width: 270px;
+    height: 270px;
+}
+
+#infoColumn{
+    margin: 5% 5% 5% 5%;
+    height: 100%;
+    padding: 0;
+    color: black;
+}
+
+#infoColumn p{
+    text-align: left;
+}
+
+/*
+infoofplace langas
+ */
+.white{
+    background: white;
+    color:black;
+    padding: 2% 10% 5% 10%;
+}
+
+.align-left p{
+    text-align: left;
+}
+
+#infoImage{
+    margin: 0;
+    height: 250px;
+    width: 300px;
+}
+
+.blue {
+    color: #2769AD;
+    font-size: 130%;
+}
+
+#comments{
+    padding-top: 5%;
+}
+
+.btn_right{
+    text-align: right;
+}
+
+#review-btn{
+    background-color: white;
+    border: none;
+    color: #2769AD;
+    outline:none;
+}
+
+#review-btn:hover{
+    text-decoration: underline;
+}
+
+.comment-margin{
+    margin-top: 3%;
+}
+
+.comment-column{
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkgrey;
+}
+
+.borderless{
+    border: none;
+}
+
+#topic{
+
+    padding-bottom: 4px;
+}
+
+#sender{
+    padding-top: 0;
+    padding-bottom: 4px;
+}
+
+#date{
+    padding-top: 0;
+    font-size: 75%;
+    padding-bottom: 4px;
+}
+
+.upvote{
+    background: url("rate-up.png") no-repeat;
+    margin-top: 4px;
+    width: 13px;
+    height: 19px;
+    margin-right: 6px;
+    margin-left: 3px;
+    float: left;
+}
+
+.downvote{
+    background: url("rate-down.png") no-repeat;
+    width: 15px;
+    height: 19px;
+    margin-right: 6px;
+    margin-left: 3px;
+    float: left;
+}
+
+#evspan{
+    float: left;
+    margin-right: 3px;
+}
+
+.rating {
+    unicode-bidi: bidi-override;
+    font-size: 150%;
+    direction: rtl;
+}
+.rating  > a {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    text-decoration: none;
+
+}
+.rating > a:hover:before,
+.rating > a:hover ~ a:before {
+    content: "\2605";
+    color: gold;
+    position: absolute;
+}
+
+#visitedComment{
+    width: 50%;
 }

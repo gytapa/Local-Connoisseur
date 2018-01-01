@@ -4,7 +4,7 @@
         <div class="center" id="test1">
         <div class="form-group">
             <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Your Email">
+            <input id="email" class="login-register-field" name="email" type="email" placeholder="Your Email">
             @if(isset($email))
                 <div class="alert alert-warning">
                     {{$email}}
@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <label for="password1">Password</label>
-            <input id="password1" name="password" type="password" placeholder="Your Password">
+            <input id="password1" class="login-register-field" name="password" type="password" placeholder="Your Password">
                 @if(isset($password))
                     <div class="alert alert-warning">
                         {{$password}}

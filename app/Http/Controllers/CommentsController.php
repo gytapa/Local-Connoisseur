@@ -16,6 +16,7 @@ class CommentsController extends Controller
                 'comment' => 'required'
             ]);
             $newComment = new Komentara();
+            $newComment->tema = $request->input('topic');
             $newComment->tekstas = $request->input('comment');
             $newComment->laikas = date('Y-m-d H:i:s');
             $newComment->ip_adresas = $_SERVER['REMOTE_ADDR'];
@@ -55,4 +56,30 @@ class CommentsController extends Controller
 
         return redirect('infoOfPlace/'.$pid.'/');
     }
+
+    public function delete($cid){
+        session_start();
+        $comment = Komentara::all()->where('id', $cid)->first();
+        if(!empty($_SESSION['user'])){
+            if($_SESSION['user']->role == 0 || $_SESSION['user']->id == $comment->fk_VARTOTOJASid){
+                $placeid = $comment->fk_LANKYTINA_VIETAid;
+                $evaluations = KomentaroVertinima::all()->where('fk_KOMENTARASid', $comment->id);
+                foreach($evaluations as $evaluation){
+                    KomentaroVertinima::destroy($evaluation->id);
+                }
+                Komentara::destroy($comment->id);
+                return view('infoOfPlace/'.$placeid);
+            }
+            else
+                return redirect('infoOfPlace/'.$comment->fk_LANKYTINA_VIETAid);
+        }
+        elseif (!empty($comment)){
+            return redirect('infoOfPlace/'.$comment->fk_LANKYTINA_VIETAid);
+        }
+        else{
+            return redirect()->route('home');
+        }
+
+    }
+
 }
