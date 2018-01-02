@@ -40,6 +40,11 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <a href="{{ url('infoOfPlace/addToList/'.$place->id.'/') }}">Add to list</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="rating">
                             <a href="{{ url('places/evaluate/'.$place->id.'/5/') }}"><span>☆</span></a>
                             <a href="{{ url('places/evaluate/'.$place->id.'/4/') }}"><span>☆</span></a>

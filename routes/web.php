@@ -58,10 +58,24 @@ Route::get('/lists/newList', 'ListsController@newList');
 //new list
 Route::post('/lists/submitNewList', 'ListsController@submitNewList');
 
-Route::get('/test','ListsController@test');
-
 Route::get('/userslist', 'userDataController@getUsersList');
 
 Route::get('/visits', 'PlacesController@getVisits');
 
 Route::get('/deleteComment/{cid}', 'CommentsController@delete');
+
+Route::get('/infoOfPlace/addToList/{pid}', 'ListsController@addToList');
+
+Route::post('/infoOfPlace/addToList/add', 'ListsController@add');
+
+Route::get('/lists/infoOfList/editAddedPlace/{id}', 'ListsController@editAddedPlace');
+
+Route::get('/lists/infoOfList/deleteAddedPlace/{id}', 'ListsController@deleteAddedPlace');
+
+Route::post('/lists/infoOfList/submitNewPlaceDesc', 'ListsController@submitNewPlaceDesc');
+
+Route::get('/lists/deleteList/{id}', 'ListsController@deleteList');
+
+Route::get('/userpage/addDocument' , 'UserDataController@addDocument');
+
+Route::post('/userpage/addDocument/submit', 'UserDataController@addDocumentSubmit');

@@ -1,9 +1,31 @@
 @extends ('layouts.app')
 @section ('content')
-    @if($_SESSION['user']->role == 0)
-        <a href="/confirmusers">Confirm Critics, that ar waiting for validation</a>
-    @endif
-    <h1>Hello,{{$user->vardas}} {{$user->pavarde}}</h1>
-    <h3>City: {{$user->miestas}}</h3>
-    <h3>Address: {{$user->adresas}}</h3>
+    <div class="transparent">
+        @if($_SESSION['user']->role == 0)
+            <a href="/confirmusers">Confirm Critics, that ar waiting for validation</a>
+        @endif
+        @if($_SESSION['user']->role == 1)
+            @if($_SESSION['user']->ar_patvirtinta == 0)
+                @if(count($certification)>0)
+                    <div class="alert alert-warning">
+                        <p>Your status as a critic still waiting for approval. Please add your certificate and/or other
+                            documents in order to accelare the procces. If u already did that please be patient.</p>
+                    </div>
+                @else
+                    <div class="alert alert-danger">
+                        <p>In order to be approved as a critic you need to upload at least one document proving your status.</p>
+                    </div>
+                @endif
+                <a href="/userpage/addDocument">Add document</a>
+            @else
+                <div class="alert alert-success">
+                    <p>Your status as a critic is approved.</p>
+                </div>
+            @endif
+        @endif
+
+        <h1>Hello,{{$user->vardas}} {{$user->pavarde}}</h1>
+        <h3>City: {{$user->miestas}}</h3>
+        <h3>Address: {{$user->adresas}}</h3>
+    </div>
 @endsection

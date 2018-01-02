@@ -16,7 +16,7 @@
                         <td>{{$place->lankytina_vietum->pavadinimas}}</td>
                         <td>{{$place->lankytina_vietum->adresas}}</td>
                         <td>{{$place->data}}</td>
-                        <td id="visitedComment">{{$place->komentaras}}</td>
+                        <td class="column-width">{{$place->komentaras}}</td>
                     </tr>
                 @endforeach
             </table>

@@ -475,6 +475,26 @@ infoofplace langas
     position: absolute;
 }
 
-#visitedComment{
+.column-width{
     width: 50%;
+}
+
+.selectpicker{
+    width: 25%;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    padding-left: 5px;
+}
+
+.list-info{
+    text-align: left;
+}
+
+#listPlaces{
+    text-align: left;
+}
+
+.listPlacesDesc{
+    width: 30%;
 }

@@ -1,5 +1,6 @@
 @extends ('layouts.app')
 @section ('content')
+    <div class="transparent">
     <h1>Critics, that need approval by admin</h1>
     @if(isset($_SESSION['message']))
         <div class="alert alert-success">
@@ -14,5 +15,6 @@
             </p>
             @endif
             @endforeach
+    </div>
     @endsection
 
