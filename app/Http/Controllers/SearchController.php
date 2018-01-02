@@ -39,6 +39,7 @@ class SearchController extends Controller
                 else
                     $url = $URL_loc1 . $location . $URL_loc3 . $radius . $URL_loc2 .$URL_3text ;
             //getting JSON file
+            echo $url;
             $json = file_get_contents($url);
             $allPlaces = json_decode($json,true);
             //parsing JSON array and getting values that are needed.
@@ -75,9 +76,9 @@ class SearchController extends Controller
                 {
 
                     if (array_key_exists('vicinity', $place)) {
-                        $photoUrl = "https://lh3.googleusercontent.com/MPPFasYaJ-m7gU1BgbZQmxC1yCbj1zEKCHZGRgaml8HmPyP_F0wj2nsyh6lLvO0XXkU=w300";
+                      //  $photoUrl = "https://lh3.googleusercontent.com/MPPFasYaJ-m7gU1BgbZQmxC1yCbj1zEKCHZGRgaml8HmPyP_F0wj2nsyh6lLvO0XXkU=w300";
                         $_POST['photo'] = $photoUrl;
-                        $place = array('name' => $place['name'], 'address' => $place['vicinity'], 'id' => $place['place_id'], 'photo' => "https://i.ytimg.com/vi/6rePvdSgvSQ/maxresdefault.jpg");
+                        $place = array('name' => $place['name'], 'address' => $place['vicinity'], 'id' => $place['place_id'], 'photo' => $photoUrl);
                     }
                     else
                         $place = array('name' => $place['name'], 'address' => $place['formatted_address'], 'id' => $place['place_id'], 'photo' => $photoUrl );

@@ -14,7 +14,9 @@ class UserDataController extends Controller
     //if no user is logged in its redirecting back to home page
     protected function displayUserData(Request $request)
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if (!isset($_SESSION['user'])) {
             return redirect()->route('home');
         } else {
@@ -29,7 +31,9 @@ class UserDataController extends Controller
     //confirming critics so that they would be able to to do critic-specific tasks
     protected function confirmUsers()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if ($_SESSION['user']->role != 0)
             return redirect()->route('home');
         $users = User::where('role', 1)->where('ar_patvirtinta', 0)->get();
@@ -38,7 +42,9 @@ class UserDataController extends Controller
 
     protected function confirmUser($uid)
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if ($_SESSION['user']->role != 0)
             return redirect()->route('home');
         $toConfirm = User::find($uid);
@@ -52,7 +58,9 @@ class UserDataController extends Controller
 
     protected function getUsersList()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if ($_SESSION['user']->role != 0)
             return redirect()->route('home');
         $critics = User::where('role', '1')->get();
@@ -62,7 +70,9 @@ class UserDataController extends Controller
 
     protected function addDocument()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if (isset($_SESSION['user']) && $_SESSION['user']->role == 1 && $_SESSION['user']->ar_patvirtinta == 0) {
             return view('addDocument');
         } else
@@ -71,7 +81,9 @@ class UserDataController extends Controller
 
     protected function addDocumentSubmit(Request $request)
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         if (isset($_SESSION['user']) && $_SESSION['user']->role == 1 && $_SESSION['user']->ar_patvirtinta == 0) {
             if ($request->hasFile('uploadedFile')) {
                 $target_dir = "..\..\criticsDocuments'\'";

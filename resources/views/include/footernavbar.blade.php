@@ -17,7 +17,7 @@
                 <a class="nav-link navbar-item-color" href="/contacts">Contacts</a>
             </li>
             @if(isset($_SESSION['user']->vardas))
-                <li class="nav-item"><a class="nav-link navbar-item-color" href="/login" id="login">Log Out</a></li>
+                <li class="nav-item"><a class="nav-link navbar-item-color" href="/login" id="/logout">Log Out</a></li>
             @else
                 <li class="nav-item"><a class="nav-link navbar-item-color" href="/login" id="login">Log In</a></li>
                 <li class="nav-item"><a class="nav-link navbar-item-color" href="/register" id="register">Register</a> </li>

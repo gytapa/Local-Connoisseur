@@ -13,6 +13,7 @@ class Controller extends BaseController
 
     protected function formatValidationErrors(\Illuminate\Contracts\Validation\Validator $validator)
     {
+
         $status = 422;
         return [
             "message" => $status . " error",

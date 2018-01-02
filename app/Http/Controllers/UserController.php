@@ -30,6 +30,9 @@ class UserController extends Controller
      */
     protected function create(Request $request)
     {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
      /*  $data->validate([
             'vardas' => $data['name'],
             'pavarde' => $data['lastname'],
@@ -121,18 +124,20 @@ class UserController extends Controller
     //views login page
     protected function viewLogin()
     {
+        session_start();
         return view('login');
     }
 
     protected function viewForm()
     {
-
+        session_start();
         return view("register");
     }
 
     //checkes if there if this email is already in the system.
     protected function checkForEmail($email)
     {
+
         $users = User::where('el_pastas',$email)->count();
         if ($users == 0)
             return true;

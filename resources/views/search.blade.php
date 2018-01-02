@@ -116,7 +116,7 @@
                             <div class="col" id="infoColumn">
                                 <h6 class="card-title"><b>{{$place['name']}}</b></h6>
                                 <p class="card-text">{{$place['address']}}</p>
-                                <p class="card-text">Get Directions</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query={{$place['name']}}" class="card-text">Get Directions</a>
                             </div>
                         </div>
                     </div>

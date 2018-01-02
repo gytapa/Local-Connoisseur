@@ -41,7 +41,7 @@
             @if(isset($_SESSION['user']->vardas))
                 <li class="nav-item"><a class="nav-link navbar-item-color" href="/userpage">
                         Sveiki, {{$_SESSION['user']->vardas}}</a></li>
-                <li class="nav-item"><a class="nav-link navbar-item-color" href="/login" id="login">Log Out</a></li>
+                <li class="nav-item"><a class="nav-link navbar-item-color" href="/logout" id="login">Log Out</a></li>
             @else
                 <li class="nav-item"><a class="nav-link navbar-item-color" href="/login" id="login">Log In</a></li>
                 <li class="nav-item"><a class="nav-link navbar-item-color" href="/register" id="register">Register</a>
