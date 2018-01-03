@@ -25,7 +25,7 @@
         <h1>Hello,{{$user->vardas}} {{$user->pavarde}}</h1>
         <h3>City: {{$user->miestas}}</h3>
         <h3>Address: {{$user->adresas}}</h3>
-
+            <a href="/changepass">Change your password</a>
         @include('include.messages')
         @if($_SESSION['user']->role == 1 && count($certification)>0)
             <table class="table" id="documentsTable">
@@ -41,4 +41,6 @@
             </table>
         @endif
     </div>
+
+
 @endsection

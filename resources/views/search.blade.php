@@ -44,6 +44,10 @@
                                         position: pos,
                                         map: map
                                     });
+                                    var lat = marker.getPosition().lat();
+                                    var lng = marker.getPosition().lng();
+                                    var loca = document.getElementById("latlng");
+                                    loca.value = "location=" + lat + "," + lng;
                                 }, function () {
                                     handleLocationError(true, infoWindow, map.getCenter());
                                 });

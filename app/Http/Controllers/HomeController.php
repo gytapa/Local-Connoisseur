@@ -11,6 +11,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //shows the index page of website
     public function index()
     {
         session_start();

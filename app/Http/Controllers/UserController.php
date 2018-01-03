@@ -126,7 +126,7 @@ class UserController extends Controller
         }
         return view('login')->with(['email' => "Entered email is not in our database"]);
     }
-
+//logs the user out of the system
     protected function logout()
     {
         session_start();
@@ -144,6 +144,7 @@ class UserController extends Controller
         return view('login');
     }
 
+    //views registration form
     protected function viewForm()
     {
         session_start();
@@ -161,6 +162,38 @@ class UserController extends Controller
         if ($users == 0)
             return true;
         return false;
+    }
+
+    //change password view form
+    protected function changePasswordView()
+    {
+        session_start();
+        return view("changepass")->with(['user' => $_SESSION['user']]);
+    }
+
+    //change the password of a user. if user enters all data correctly then he will chnange his password to a new one
+    protected function changePassword(Request $request)
+    {
+        session_start();
+
+        $message = "";
+        if ((Hash::check($request['password'],$_SESSION['user']->slaptazodis)))
+        {
+            if (strlen($request['newpass']) >= 6) {
+                if (strcmp($request['newpasss'] , $request['newpasss2']) == 0) {
+                    $message = "Password has been changed";
+                    $_SESSION['user']->slaptazodis = Hash::make($request['newpass']);
+                    $_SESSION['user']->save();
+                }
+                else
+                $message = "passwords do not match";
+            }
+            else
+                $message = "new password is too short";
+        }
+        else
+            $message = "Bad current password";
+        return view("changepass")->with(['user' => $_SESSION['user'],"message" => $message]);
     }
 
 

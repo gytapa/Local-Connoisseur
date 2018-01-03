@@ -32,13 +32,16 @@ Route::get('/contacts', 'HomeController@contact');
 //login routes
 Route::get('/login', 'UserController@viewLogin');
 Route::post('/login', 'UserController@login');
+//change passworld routes
+Route::get('/changepass','UserController@changePasswordView');
+Route::post('/changepass','UserController@changePassword');
 //logout route
 Route::get('/logout','UserController@logout');
 //userpage route
-Route::get('/userpage', 'userDataController@displayUserData');
+Route::get('/userpage', 'UserDataController@displayUserData');
 //confirm users route
-Route::get('/confirmusers', 'userDataController@confirmUsers');
-Route::get('/confirm/{uid}', 'userDataController@confirmUser');
+Route::get('/confirmusers', 'UserDataController@confirmUsers');
+Route::get('/confirm/{uid}', 'UserDataController@confirmUser');
 //places route
 Route::get('/places', 'PlacesController@getPlaces');
 //places evalution route

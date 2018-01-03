@@ -78,6 +78,10 @@ class SearchController extends Controller
 
                     if (array_key_exists('vicinity', $place)) {
                       //  $photoUrl = "https://lh3.googleusercontent.com/MPPFasYaJ-m7gU1BgbZQmxC1yCbj1zEKCHZGRgaml8HmPyP_F0wj2nsyh6lLvO0XXkU=w300";
+                       if (!isset($photoUrl))
+                       {
+                           $photoUrl = 'https://www.google.lt/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjCo-bUnbzYAhVjQpoKHRBHD5UQjRwIBw&url=https%3A%2F%2Fcvhci.anthropomatik.kit.edu%2F~bschauer%2Fdatasets%2Fgoogle-512%2Fimages%2Fblack%2Bcolor%2F%3FC%3DS%3BO%3DA&psig=AOvVaw2GyU1XKNgeCkWE7OSsrUNp&ust=1515083945635491';
+                       }
                         $_POST['photo'] = $photoUrl;
                         $place = array('name' => $place['name'], 'address' => $place['vicinity'], 'id' => $place['place_id'], 'photo' => $photoUrl);
                     }
