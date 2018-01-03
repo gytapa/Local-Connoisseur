@@ -6,6 +6,7 @@
             <h3>{{$list->pavadinimas}}</h3>
             <p class="list-info">{{$list->aprasymas}}</p>
             <p class="list-info">Created at: {{$list->sukurimo_data}}</p>
+            @include('include.messages')
             @if($list->itraukta_vieta->count() > 0)
                 <h4>Places in this list:</h4>
                 <table class="table table-striped" id="listPlaces">

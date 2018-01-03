@@ -2,7 +2,7 @@
 @section ('content')
     <div id="search-box">
         <div class="transparent">
-            <h2>Search for a place</h2>
+            <h2 class="headertekst">Search for a place</h2>
             <p>Look for a place where you could eat</p>
             <div id="search-form-div">
                 <form id="search-form" method="get">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="Row">
                         <div class="Column" id="select-type-column">
-                            <select name="options" class="selectpicker" multiple>
+                            <select name="options" id="typesPicker" multiple>
                                 <option value="cafe">Cafe</option>
                                 <option value="restaurant">Restaurant</option>
                                 <option value="bar">Bar</option>
@@ -96,13 +96,16 @@
                             </select>
                         </div>
                     </div>
-                    <input type="submit" value="Find a Place">
+                    <div class="btn_center">
+                    <input class="findButton" type="submit" value="Find a Place">
+                    </div>
                 </form>
             </div>
         </div>
         @if(isset($_GET['city']))
             <div class="foundedPlaces">
                 <h3>Found places</h3>
+                @include('include.messages')
                 @foreach ($places as $place)
 
                     <div class="floating-box">
@@ -116,7 +119,7 @@
                             <div class="col" id="infoColumn">
                                 <h6 class="card-title"><b>{{$place['name']}}</b></h6>
                                 <p class="card-text">{{$place['address']}}</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query={{$place['name']}}" class="card-text">Get Directions</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query={{$place['name']}}" class="card-text" target="_blank">Get Directions</a>
                             </div>
                         </div>
                     </div>

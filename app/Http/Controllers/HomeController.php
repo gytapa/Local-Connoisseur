@@ -16,4 +16,25 @@ class HomeController extends Controller
         session_start();
         return view('home');
     }
+
+    ///
+    /// Metodas about langui atidaryti
+    /// return - about langą
+    ///
+    public function about(){
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        return view('about');
+    }
+
+    ///Metodas contact langui atidaryti
+    ///return contact langą
+    ///
+    public function contact(){
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        return view('contact');
+    }
 }

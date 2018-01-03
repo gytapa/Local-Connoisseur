@@ -3,6 +3,7 @@
 @section('content')
     <div class="transparent">
         <h3>Add to list</h3>
+        @include('include.messages')
         @if(isset($_SESSION['user']))
             @if(count($lists) > 0)
                 {!! Form::open(['url' => 'infoOfPlace/addToList/add']) !!}

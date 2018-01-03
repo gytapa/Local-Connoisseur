@@ -3,6 +3,7 @@
 @section('content')
     <div class="transparent">
         <h3>Add Document</h3>
+        @include('include.messages')
         @if(isset($_SESSION['user']) && $_SESSION['user']->role == 1 && $_SESSION['user']->ar_patvirtinta == 0)
             {!! Form::open( [ 'url' =>  'userpage/addDocument/submit' , 'method' => 'post', 'files' => true ] ) !!}
             {{Form::label('file', 'Upload file')}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blokuoti;
 use App\Models\User;
 use Illuminate\Contracts\Validation\Factory;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
@@ -98,18 +99,30 @@ class UserController extends Controller
     {
         session_start();
         //checks if there is user with this email
+        if (isset($_SESSION['user'])) {
+            return redirect()->route('home');
+        }
         if (!($this->checkForEmail($request['email'])))
         {
             $user = User::where('el_pastas',$request['email'])->first();
-            //tries to confirm password
-            if (Hash::check($request['password'], $user->slaptazodis)) {
-                //user has entered correct data. put his data to session.
-                $request->session()->put('user',$user);
-                $_SESSION['user'] = $user;
-                return view('loggedin');
+            $block = Blokuoti::all()->where('fk_VARTOTOJASid', $user->id)->first();
+            if(count($block) == 0 || strtotime($block->laikas) < strtotime('now')) {
+                if(count($block) > 0 && strtotime($block->laikas) < strtotime('now')){
+                    Blokuoti::destroy($block->id);
+                }
+                //tries to confirm password
+                if (Hash::check($request['password'], $user->slaptazodis)) {
+                    //user has entered correct data. put his data to session.
+                    $request->session()->put('user', $user);
+                    $_SESSION['user'] = $user;
+                    return view('loggedin');
+                } else
+                    return view('login')->with(['password' => "Bad password"]);
             }
-            else
-            return view('login')->with(['password' => "Bad password"]);
+            else{
+                $block = Blokuoti::all()->where('fk_VARTOTOJASid', $user->id)->first();
+                return view('login')->with(['block' => $block]);
+            }
         }
         return view('login')->with(['email' => "Entered email is not in our database"]);
     }
@@ -125,12 +138,18 @@ class UserController extends Controller
     protected function viewLogin()
     {
         session_start();
+        if (isset($_SESSION['user'])) {
+            return redirect()->route('home');
+        }
         return view('login');
     }
 
     protected function viewForm()
     {
         session_start();
+        if (isset($_SESSION['user'])) {
+            return redirect()->route('home');
+        }
         return view("register");
     }
 

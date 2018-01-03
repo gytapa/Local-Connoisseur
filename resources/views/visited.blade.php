@@ -3,6 +3,7 @@
 @section('content')
     <div class="transparent">
         <h4>{{$name}}</h4>
+        @include('include.messages')
     {!! Form::open(['url' => 'infoOfPlace/submitVisited']) !!}
     {{ Form::hidden('pid', $pid) }}
     <div class="form-group">

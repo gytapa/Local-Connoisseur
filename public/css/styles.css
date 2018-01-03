@@ -402,6 +402,9 @@ infoofplace langas
     text-decoration: underline;
 }
 
+/*
+ comments block
+ */
 .comment-margin{
     margin-top: 3%;
 }
@@ -412,9 +415,6 @@ infoofplace langas
     border-color: darkgrey;
 }
 
-.borderless{
-    border: none;
-}
 
 #topic{
 
@@ -431,7 +431,9 @@ infoofplace langas
     font-size: 75%;
     padding-bottom: 4px;
 }
-
+/*
+  comments evaluation
+ */
 .upvote{
     background: url("rate-up.png") no-repeat;
     margin-top: 4px;
@@ -455,7 +457,9 @@ infoofplace langas
     float: left;
     margin-right: 3px;
 }
-
+/*
+   star rating plane css by reversing direction
+ */
 .rating {
     unicode-bidi: bidi-override;
     font-size: 150%;
@@ -475,10 +479,17 @@ infoofplace langas
     position: absolute;
 }
 
+#star{
+    text-decoration: none;
+}
+
 .column-width{
     width: 50%;
 }
 
+/*
+    list select
+ */
 .selectpicker{
     width: 25%;
     height: 30px;
@@ -497,4 +508,79 @@ infoofplace langas
 
 .listPlacesDesc{
     width: 30%;
+}
+/*
+ critics documents table
+ */
+#documentsTable{
+    margin-top: 5%;
+    width: 50%;
+}
+/*
+search types select
+ */
+#typesPicker{
+    display:inline-block;
+    overflow:hidden;
+    border:solid grey 1px;
+    border-radius: 10px;
+    padding: 5px;
+    height: 110px;
+    width: auto;
+}
+
+/*
+ search button style
+ */
+.findButton{
+    border: none;
+    border-radius: 7px;
+    padding: 5px 10px 5px 10px;
+    font-size: 150%;
+    background-color: #CE2325;
+    text-transform: uppercase;
+    color: white;
+}
+
+.findButton:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.borderless{
+    border: none;
+}
+
+h2.headertekst {
+    text-align: center;
+}
+
+/*
+ split comments critics and users
+ */
+#commentsSplit{
+    text-align: left;
+    font-size: 150%;
+    margin-top: 5%;
+}
+
+/*
+   contact view
+ */
+#author{
+    margin-top: 20%;
+    text-align: center;
+}
+
+/*
+ about view
+ */
+#about{
+    margin-top: 15%;
+    text-align: left;
+}
+
+#messages{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

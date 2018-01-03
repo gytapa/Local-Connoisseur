@@ -14,7 +14,9 @@ class SearchController extends Controller
 
     public function displayData()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
         $API_KEY = "AIzaSyALWBTn0xzhQRPubLtd42yWWMPzRkVqblo";
         $URL_1text = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=food+in+";
         $URL_2text = "&radius=";
@@ -39,7 +41,6 @@ class SearchController extends Controller
                 else
                     $url = $URL_loc1 . $location . $URL_loc3 . $radius . $URL_loc2 .$URL_3text ;
             //getting JSON file
-            echo $url;
             $json = file_get_contents($url);
             $allPlaces = json_decode($json,true);
             //parsing JSON array and getting values that are needed.

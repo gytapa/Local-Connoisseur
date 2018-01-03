@@ -2,6 +2,7 @@
 @section('content')
     <div class="transparent">
         <h3>Edit description about {{$addedPlace->lankytina_vietum->pavadinimas}} at list {{$addedPlace->sarasa->pavadinimas}}</h3>
+        @include('include.messages')
         {!! Form::open(['url' => 'lists/infoOfList/submitNewPlaceDesc']) !!}
         {{ Form::hidden('id', $addedPlace->id) }}
         <div class="form-group">

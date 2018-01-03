@@ -25,6 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //registration routes
 Route::get('/register', 'UserController@viewForm');
 Route::post('/register', 'UserController@create');
+//about route
+Route::get('/about', 'HomeController@about');
+//contact route
+Route::get('/contacts', 'HomeController@contact');
 //login routes
 Route::get('/login', 'UserController@viewLogin');
 Route::post('/login', 'UserController@login');
@@ -57,25 +61,37 @@ Route::get('/lists/infoOfList/{lid}', 'ListsController@getInfoOfList');
 Route::get('/lists/newList', 'ListsController@newList');
 //new list
 Route::post('/lists/submitNewList', 'ListsController@submitNewList');
-
+//userlist route
 Route::get('/userslist', 'userDataController@getUsersList');
-
+//visits history route
 Route::get('/visits', 'PlacesController@getVisits');
-
+//comment delete route
 Route::get('/deleteComment/{cid}', 'CommentsController@delete');
-
+//comment edit route
+Route::get('/editComment/{cid}', 'CommentsController@edit');
+//comment edit route
+Route::post('/editComment/submit', 'CommentsController@editSubmit');
+//add to list route
 Route::get('/infoOfPlace/addToList/{pid}', 'ListsController@addToList');
-
+//add to lsit submit route
 Route::post('/infoOfPlace/addToList/add', 'ListsController@add');
-
+//edit added place route
 Route::get('/lists/infoOfList/editAddedPlace/{id}', 'ListsController@editAddedPlace');
-
+//delete added palce route
 Route::get('/lists/infoOfList/deleteAddedPlace/{id}', 'ListsController@deleteAddedPlace');
-
+//edit added place submit
 Route::post('/lists/infoOfList/submitNewPlaceDesc', 'ListsController@submitNewPlaceDesc');
-
+//delete list route
 Route::get('/lists/deleteList/{id}', 'ListsController@deleteList');
-
+//add document route
 Route::get('/userpage/addDocument' , 'UserDataController@addDocument');
-
+//submit document route
 Route::post('/userpage/addDocument/submit', 'UserDataController@addDocumentSubmit');
+//downlaod docuemtn route
+Route::get('/userpage/download/{name}', 'UserDataController@downloadDocument');
+//block user route
+Route::get('/userlist/block/{id}', 'UserDataController@blockUser');
+//submit block route
+Route::post('/userlist/block/submitBlock', 'UserDataController@submitBlock');
+//unblock user route
+Route::get('/userlist/unblock/{id}' , 'UserDataController@unblock');

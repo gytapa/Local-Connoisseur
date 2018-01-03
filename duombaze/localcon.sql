@@ -67,6 +67,17 @@ CREATE TABLE `komentaras` (
 
 -- --------------------------------------------------------
 
+CREATE TABLE `blokuotis` (
+  `id` int(20) NOT NULL,
+  `priezastis` varchar(100)  COLLATE utf8_lithuanian_ci NOT NULL,
+  `laikas` DATE NOT NULL ,
+  `created_at` DATETIME NOT NULL ,
+  `updated_at` DATETIME NOT NULL ,
+  `fk_VARTOTOJASid` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `komentaro_vertinimas`
 --
@@ -211,6 +222,13 @@ ALTER TABLE `komentaras`
   ADD KEY `gauna` (`fk_LANKYTINA_VIETAid`);
 
 --
+-- Indexes for table `blokuoti`
+--
+ALTER TABLE `blokuotis`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blokuotas` (`fk_VARTOTOJASid`);
+
+--
 -- Indexes for table `komentaro_vertinimas`
 --
 ALTER TABLE `komentaro_vertinimas`
@@ -275,6 +293,12 @@ ALTER TABLE `vietos_vertinimas`
 ALTER TABLE `komentaras`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 --
+--
+-- AUTO_INCREMENT for table `blokuoti`
+--
+ALTER TABLE `blokuotis`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `lankytios_vietos_tipai`
 --
 ALTER TABLE `lankytios_vietos_tipai`
@@ -336,6 +360,13 @@ ALTER TABLE `itraukta_vieta`
 ALTER TABLE `komentaras`
   ADD CONSTRAINT `gauna` FOREIGN KEY (`fk_LANKYTINA_VIETAid`) REFERENCES `lankytina_vieta` (`id`),
   ADD CONSTRAINT `raso` FOREIGN KEY (`fk_VARTOTOJASid`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `blokuoti`
+--
+ALTER TABLE `blokuotis`
+  ADD CONSTRAINT `blokuotas` FOREIGN KEY (`fk_VARTOTOJASid`) REFERENCES `users` (`id`);
+
 
 --
 -- Constraints for table `komentaro_vertinimas`

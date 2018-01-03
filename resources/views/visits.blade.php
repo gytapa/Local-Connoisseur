@@ -3,6 +3,7 @@
 @section('content')
     <div class="transparent">
         <h1>Visited places</h1>
+        @include('include.messages')
         @if(count($visitedPlaces)>0)
             <table class="table table-striped" id="visitedPlaces-table">
                 <tr>

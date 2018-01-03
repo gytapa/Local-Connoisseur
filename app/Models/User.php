@@ -67,6 +67,11 @@ class User extends Eloquent
 		return $this->hasMany(\App\Models\Komentara::class, 'fk_VARTOTOJASid');
 	}
 
+    public function blokas()
+    {
+        return $this->hasMany(\App\Models\Blokuoti::class, 'fk_VARTOTOJASid');
+    }
+
 	public function komentaro_vertinimas()
 	{
 		return $this->hasMany(\App\Models\KomentaroVertinima::class, 'fk_VARTOTOJASid');

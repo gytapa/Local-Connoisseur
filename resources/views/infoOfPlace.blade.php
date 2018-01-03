@@ -22,9 +22,9 @@
                         $result = number_format((float)$result, 2, '.', '');
                         @endphp
                         <p>{{$result}}/5.00 <span class="blue">&#9733;</span></p>
-                        <p>Cheap</p>
                         <p>{{$place->adresas}}</p>
-                        <p>Get directions</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{$place['pavadinimas']}}"
+                           class="card-text" target="_blank">Get Directions</a>
                     </div>
                     <div class="col">
                         <br>
@@ -44,66 +44,35 @@
                 <div class="row">
                     <div class="col">
                         <div class="rating">
-                            <a href="{{ url('places/evaluate/'.$place->id.'/5/') }}"><span>☆</span></a>
-                            <a href="{{ url('places/evaluate/'.$place->id.'/4/') }}"><span>☆</span></a>
-                            <a href="{{ url('places/evaluate/'.$place->id.'/3/') }}"><span>☆</span></a>
-                            <a href="{{ url('places/evaluate/'.$place->id.'/2/') }}"><span>☆</span></a>
-                            <a href="{{ url('places/evaluate/'.$place->id.'/1/') }}"><span>☆</span></a>
+                            <a id="star" href="{{ url('places/evaluate/'.$place->id.'/5/') }}"><span>☆</span></a>
+                            <a id="star" href="{{ url('places/evaluate/'.$place->id.'/4/') }}"><span>☆</span></a>
+                            <a id="star" href="{{ url('places/evaluate/'.$place->id.'/3/') }}"><span>☆</span></a>
+                            <a id="star" href="{{ url('places/evaluate/'.$place->id.'/2/') }}"><span>☆</span></a>
+                            <a id="star" href="{{ url('places/evaluate/'.$place->id.'/1/') }}"><span>☆</span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="comments">
                 <div class="container">
-                    @if(isset($success))
-                        <div class="alert alert-success">
-                            {{$success}}
-                        </div>
-                    @endif
+                    @include('include.messages')
                     <div class="row">
                         <div class="col">
                             @include('include.commentcomponent')
                         </div>
                     </div>
                     @if(count($comments)>0)
+                        <p id="commentsSplit">Critics reviews</p>
                         @foreach($comments as $comment)
-                            <div class="col comment-column comment-margin">
-                                <ul class="list-group">
-                                    <li class="list-group-item borderless" id="topic"><b>{{$comment->tema}}</b></li>
-                                    <li class="list-group-item borderless"
-                                        id="sender">{{$comment->user->vardas}} {{$comment->user->pavarde}}</li>
-                                    <li class="list-group-item borderless" id="date">{{$comment->laikas}}</li>
-                                    @php
-                                        $positive = 0;
-                                        $negative = 0;
-                                    @endphp
-                                    @foreach($comment->komentaro_vertinimas as $evaluation)
-                                        @php
-                                            if($evaluation->vertinimas == 1){
-                                                $positive +=1;
-                                            }
-                                            else{
-                                                $negative +=1;
-                                            }
-                                        @endphp
-                                    @endforeach
-                                    <li class="list-group-item borderless" id="evaluation"><span
-                                                id="evspan">{{$positive}}</span><a class="upvote"
-                                                                                   href="{{ url('infoOfPlace/evaluate/'.$comment->id.'/1/'.$place->id.'/') }}"></a><span
-                                                id="evspan">{{$negative}}</span><a class="downvote"
-                                                                                   href="{{ url('infoOfPlace/evaluate/'.$comment->id.'/-1/'.$place->id.'/') }}"></a>
-                                    </li>
-                                    <li class="list-group-item borderless" id="text">{{$comment->tekstas}}</li>
-                                    @if(isset($_SESSION['user']) && $_SESSION['user']->id == $comment->fk_VARTOTOJASid)
-                                        <li class="list-group-item borderless" id="actions"><a
-                                                    href="{{ url('deleteComment/'.$comment->id.'/') }}">Delete</a>&nbsp;&nbsp;&nbsp;<a
-                                                    href="{{ url('editComment/'.$comment->id.'/') }}">Edit</a></li>
-                                    @elseif(isset($_SESSION['user']) && $_SESSION['user']->role == 0)
-                                        <li class="list-group-item borderless" id="actions"><a
-                                                    href="{{ url('deleteComment/'.$comment->id.'/') }}">Delete</a></li>
-                                    @endif
-                                </ul>
-                            </div>
+                            @if($comment->user->ar_patvirtinta)
+                                @include('include.commentsBlock')
+                            @endif
+                        @endforeach
+                        <p id="commentsSplit">Users reviews</p>
+                        @foreach($comments as $comment)
+                            @if(!$comment->user->ar_patvirtinta)
+                                @include('include.commentsBlock')
+                            @endif
                         @endforeach
                     @else
                         <div class="col comment-margin">

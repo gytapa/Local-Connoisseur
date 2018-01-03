@@ -13,12 +13,6 @@
                 <a class="nav-link navbar-item-color" href="/search">Search for a place</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link navbar-item-color" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link navbar-item-color" href="/contacts">Contacts</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link navbar-item-color" href="/places">Places</a>
             </li>
             @if(isset($_SESSION['user']))
@@ -28,12 +22,13 @@
                 <li class="nav-item">
                 <li><a class="nav-link navbar-item-color" href="/visits">My history</a></li>
                 </li>
-            @endif
-            @if(isset($_SESSION['user']) && $_SESSION['user']->role == 0)
-            </li>
-            <li class="nav-item">
-            <li><a class="nav-link navbar-item-color" href="/userslist">Users</a></li>
-            </li>
+                @endif
+                @if(isset($_SESSION['user']) && $_SESSION['user']->role == 0)
+                </li>
+                <li class="nav-item">
+                <li><a class="nav-link navbar-item-color" href="/confirmusers">Confirm critics</a></li>
+                <li><a class="nav-link navbar-item-color" href="/userslist">Users</a></li>
+                </li>
             @endif
 
         </ul>
